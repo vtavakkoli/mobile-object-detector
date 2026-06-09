@@ -38,12 +38,17 @@ public class SettingsActivity extends AppCompatActivity {
         confidenceSeekBar = findViewById(R.id.confidenceSeekBar);
         iouSeekBar = findViewById(R.id.iouSeekBar);
         classesContainer = findViewById(R.id.classesContainer);
+        Button recommendedPresetButton = findViewById(R.id.recommendedPresetButton);
+        Button shelfPresetButton = findViewById(R.id.shelfPresetButton);
         Button selectAllButton = findViewById(R.id.selectAllButton);
         Button deselectAllButton = findViewById(R.id.deselectAllButton);
         Button saveButton = findViewById(R.id.saveSettingsButton);
 
         setupThresholds();
         buildClassList();
+
+        recommendedPresetButton.setOnClickListener(v -> applyRecommendedPreset());
+        shelfPresetButton.setOnClickListener(v -> applyShelfPreset());
 
         selectAllButton.setOnClickListener(v -> {
             for (CheckBox checkBox : classCheckBoxes) {
@@ -103,6 +108,44 @@ public class SettingsActivity extends AppCompatActivity {
             classesContainer.addView(cb);
             classCheckBoxes.add(cb);
         }
+    }
+
+
+    private void applyRecommendedPreset() {
+        confidenceSeekBar.setProgress(55);
+        iouSeekBar.setProgress(45);
+        updateConfidenceText(0.55f);
+        updateIouText(0.45f);
+        for (CheckBox checkBox : classCheckBoxes) {
+            checkBox.setChecked(true);
+        }
+        Toast.makeText(this, "Recommended live-camera settings applied", Toast.LENGTH_SHORT).show();
+    }
+
+    private void applyShelfPreset() {
+        confidenceSeekBar.setProgress(50);
+        iouSeekBar.setProgress(45);
+        updateConfidenceText(0.50f);
+        updateIouText(0.45f);
+
+        Set<String> shelfClasses = new HashSet<>();
+        shelfClasses.add("book");
+        shelfClasses.add("bottle");
+        shelfClasses.add("cup");
+        shelfClasses.add("laptop");
+        shelfClasses.add("cell phone");
+        shelfClasses.add("keyboard");
+        shelfClasses.add("mouse");
+        shelfClasses.add("remote");
+        shelfClasses.add("clock");
+        shelfClasses.add("vase");
+        shelfClasses.add("scissors");
+        shelfClasses.add("toothbrush");
+
+        for (CheckBox checkBox : classCheckBoxes) {
+            checkBox.setChecked(shelfClasses.contains(checkBox.getText().toString()));
+        }
+        Toast.makeText(this, "Shelf/object preset applied. Person is disabled.", Toast.LENGTH_LONG).show();
     }
 
     private void saveSettingsAndClose() {

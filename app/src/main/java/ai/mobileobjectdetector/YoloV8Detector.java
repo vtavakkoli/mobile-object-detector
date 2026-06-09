@@ -31,7 +31,9 @@ import java.util.Set;
  */
 public class YoloV8Detector implements AutoCloseable {
     private static final int NUM_THREADS = 4;
-    private static final int MAX_DETECTIONS = 30;
+    private static final int MAX_DETECTIONS = 12;
+    private static final float MIN_BOX_AREA_RATIO = 0.0015f;
+    private static final float MAX_BOX_AREA_RATIO = 0.92f;
 
     private final Interpreter interpreter;
     private final int inputWidth;
@@ -187,6 +189,10 @@ public class YoloV8Detector implements AutoCloseable {
                     clamp(bottom, 0, originalHeight)
             );
             if (rect.width() < 2 || rect.height() < 2) continue;
+
+            float areaRatio = (rect.width() * rect.height()) / Math.max(1f, originalWidth * originalHeight);
+            if (areaRatio < MIN_BOX_AREA_RATIO || areaRatio > MAX_BOX_AREA_RATIO) continue;
+
             detections.add(new Detection(rect, label, bestScore, bestClass));
         }
         return detections;

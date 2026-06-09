@@ -16,11 +16,14 @@ public final class SettingsStore {
     private static final String KEY_IOU = "iou_threshold";
     private static final String KEY_SELECTED_CLASSES = "selected_classes";
 
+    public static final float RECOMMENDED_CONFIDENCE = 0.55f;
+    public static final float RECOMMENDED_IOU = 0.45f;
+
     private SettingsStore() {
     }
 
     public static float getConfidenceThreshold(Context context) {
-        return getPrefs(context).getFloat(KEY_CONFIDENCE, 0.40f);
+        return getPrefs(context).getFloat(KEY_CONFIDENCE, RECOMMENDED_CONFIDENCE);
     }
 
     public static void setConfidenceThreshold(Context context, float value) {
@@ -28,7 +31,7 @@ public final class SettingsStore {
     }
 
     public static float getIouThreshold(Context context) {
-        return getPrefs(context).getFloat(KEY_IOU, 0.45f);
+        return getPrefs(context).getFloat(KEY_IOU, RECOMMENDED_IOU);
     }
 
     public static void setIouThreshold(Context context, float value) {
