@@ -100,7 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Confidence threshold: 0.40"
+                android:text="Confidence threshold: 0.55"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
 
@@ -109,7 +109,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:max="90"
-                android:progress="40" />
+                android:progress="55" />
 
             <TextView
                 android:id="@+id/classSummaryText"
@@ -132,7 +132,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Tip: first load the model, then open the camera. The app stores the downloaded model inside private app storage."
+            android:text="Tip: for live camera use confidence 0.50–0.65 and NMS IoU 0.40–0.50. YOLO can detect printed people on book covers as person; disable the person class for shelf/object tests."
             android:textColor="#666666"
             android:textSize="14sp" />
     </LinearLayout>

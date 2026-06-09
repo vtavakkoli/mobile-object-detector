@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Confidence threshold: 0.40"
+            android:text="Confidence threshold: 0.55"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -51,6 +51,29 @@
             android:layout_height="wrap_content"
             android:max="90" />
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/recommendedPresetButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:text="Recommended" />
+
+            <Button
+                android:id="@+id/shelfPresetButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                android:text="Shelf preset" />
+        </LinearLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -64,7 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="Leave all checked to detect all COCO classes. Uncheck classes you do not need."
+            android:text="Recommended live camera: confidence 0.55 and NMS 0.45. YOLO can detect printed people in books or posters as person; use the shelf/object preset to disable person."
             android:textColor="#555555"
             android:textSize="14sp" />
 
