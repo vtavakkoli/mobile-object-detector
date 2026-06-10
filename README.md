@@ -119,25 +119,6 @@ The settings screen provides:
 
 ---
 
-## Suggested Repository Topics
-
-```text
-android
-java
-object-detection
-yolov8
-litert
-tflite
-camerax
-huggingface
-mobile-ai
-computer-vision
-edge-ai
-real-time-detection
-```
-
----
-
 ## Educational Purpose
 
 This project is created for teaching and learning mobile AI, computer vision, and on-device inference. It is not intended for safety-critical, medical, legal, or production-grade use without further testing, validation, and optimization.
